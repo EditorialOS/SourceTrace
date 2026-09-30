@@ -31,6 +31,19 @@ If two registered sources give materially different answers for the same
 claim (a price, a date, a figure), mark it `CONTRADICTED` and note both
 sources. Do not average them or pick the more convenient one.
 
+## Handling Source-vs-Claim Contradiction
+
+When `verify_excerpt` returns `unverifiable` for a claim, call
+`check_contradiction` with the same `source_id`, `source_text`, and the claim's
+exact wording.
+
+- `CONTRADICTS` (with a quoted span) -> record the claim as `CONTRADICTED` and
+  attach the span. This is distinct from, and outranks, `UNVERIFIED`.
+- `NO_CONFLICT` -> the claim stays `UNVERIFIED`.
+
+`check_contradiction` can only fail a claim. Never use its result to upgrade a
+claim's status. A claim reaches VERIFIED only through `verify_excerpt`.
+
 ## What this skill does not do
 
 It does not decide whether the draft should publish, and it does not

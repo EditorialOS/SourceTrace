@@ -14,6 +14,11 @@ it is `UNVERIFIED` in this report, full stop.
 **Claim map** — one row per material or critical claim:
 | Claim | Status | Source | Method |
 
+**Contradicted claims** — list `CONTRADICTED` claims in their own block, above
+the missing-evidence queue, each with the conflicting source span. These are not
+"needs a source" — they are "the source says otherwise." Any CONTRADICTED claim
+forces the overall recommendation to REMOVE OR REWRITE.
+
 **Missing-evidence queue** — every claim that came back `UNVERIFIED` or
 `CONTRADICTED`, listed separately so a human can see at a glance what still
 needs a real source.
